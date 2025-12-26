@@ -21,6 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const verifyBtn = document.getElementById('verify-btn');
     const activityList = document.getElementById('activity-list');
 
+    const onlineCountElement = document.getElementById('online-count');
+    let currentOnlineCount = Math.floor(Math.random() * (600 - 400 + 1)) + 400;
+    
+    if (onlineCountElement) {
+        onlineCountElement.innerText = currentOnlineCount.toLocaleString();
+        setInterval(() => {
+            const change = Math.floor(Math.random() * 7) - 3;
+            currentOnlineCount += change;
+            if (currentOnlineCount < 400) currentOnlineCount = 400;
+            if (currentOnlineCount > 600) currentOnlineCount = 600;
+            onlineCountElement.innerText = currentOnlineCount.toLocaleString();
+        }, 3000);
+    }
+
     function showStep(stepNum) {
         steps.forEach((step, index) => {
             step.classList.toggle('active', index === stepNum - 1);
