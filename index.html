@@ -103,9 +103,24 @@
     </main>
     <footer>
         <div class="container">
-            <p>&copy; 2025 Roblox Reward Hub. This is a promotional landing page. Not affiliated with Roblox Corporation.</p>
+            <p>&copy; 2026 150HP Network. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" onclick="openModal('terms'); return false;">Terms of Service</a> | 
+                <a href="#" onclick="openModal('privacy'); return false;">Privacy Policy</a> | 
+                <a href="#" onclick="openModal('contact'); return false;">Contact Us</a>
+            </div>
         </div>
     </footer>
+
+    <!-- Modal Structure -->
+    <div id="info-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 id="modal-title">Title</h2>
+            <div id="modal-body">Content...</div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

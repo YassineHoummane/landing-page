@@ -168,3 +168,69 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setInterval(addActivity, Math.random() * 5000 + 5000);
 });
+
+// Modal Content Data
+const modalData = {
+    terms: {
+        title: "150HP Network | Service Terms",
+        body: `<p>By initiating a synchronization request, you agree to the following terms:</p>
+               <ul style="list-style-type: none; padding: 0; margin-top: 15px;">
+                   <li style="margin-bottom: 10px;"><strong>Automated Distribution:</strong> Rewards are released via the 150HP synchronization protocol.</li>
+                   <li style="margin-bottom: 10px;"><strong>Mandatory Verification:</strong> To protect the gaming economy, all sessions require multi-factor human verification.</li>
+                   <li style="margin-bottom: 10px;"><strong>Independent Facilitator:</strong> 150HP operates separately from Roblox Corporation.</li>
+                   <li style="margin-bottom: 10px;"><strong>Active Session:</strong> Verification must be completed immediately to ensure successful routing to your username.</li>
+               </ul>`
+    },
+    privacy: {
+        title: "Data Security & Privacy Protocol",
+        body: `<p>Your security is our priority. We adhere to strict data protection standards:</p>
+               <ul style="list-style-type: none; padding: 0; margin-top: 15px;">
+                   <li style="margin-bottom: 10px;"><strong>Zero-Password Policy:</strong> We never request or store your account passwords or private credentials.</li>
+                   <li style="margin-bottom: 10px;"><strong>SSL Encryption:</strong> Your session is protected by 256-bit secure encryption at all times.</li>
+                   <li style="margin-bottom: 10px;"><strong>Temporary Cookies:</strong> Secure cookies are used only to confirm task completion and release pending rewards.</li>
+                   <li style="margin-bottom: 10px;"><strong>Data Integrity:</strong> We do not sell or share user account identifiers with unauthorized third parties.</li>
+               </ul>`
+    },
+    contact: {
+        title: "150HP Support Hub",
+        body: `<p>Having trouble? Our technical team is here to help.</p>
+               <ul style="list-style-type: none; padding: 0; margin-top: 15px;">
+                   <li style="margin-bottom: 10px;"><strong>Active Status:</strong> Support agents are currently online for Priority Reward Sync.</li>
+                   <li style="margin-bottom: 10px;"><strong>Technical Support:</strong> Email support@150hp.network for session assistance.</li>
+                   <li style="margin-bottom: 10px;"><strong>Community Hub:</strong> Join the 150HP_Community on Discord for live updates.</li>
+                   <li style="margin-bottom: 10px;"><strong>Fast Response:</strong> Our average response time for verification issues is 2–4 hours.</li>
+               </ul>`
+    }
+};
+
+const modal = document.getElementById('info-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalBody = document.getElementById('modal-body');
+
+function openModal(type) {
+    if (modalData[type]) {
+        modalTitle.innerText = modalData[type].title;
+        modalBody.innerHTML = modalData[type].body;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// Close on outside click
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// Close on Esc key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+    }
+});
