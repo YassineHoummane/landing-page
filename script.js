@@ -121,12 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     verifyBtn.addEventListener('click', () => {
-        if (typeof _Hn === 'function') {
-            _Hn();
-        } else {
-            console.error("AdBlueMedia locker function not found.");
-            alert("Verification system is loading... please try again in a moment.");
-        }
+        _TG();
     });
 
     const names = [
