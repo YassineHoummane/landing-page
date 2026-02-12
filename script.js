@@ -125,30 +125,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const names = [
-        "Liam_Blox", "iiSophia", "ItzChloe", "xXNoahXx", "SunnyOlivia", "MasonGamer", "SparkleAva", "Ethan_Playz",
-        "ItzIsabella", "JacobRockz", "MiaSunshine", "LucasVibes", "CharlotteSky", "AidenExplorer", "Amelia_Moon",
-        "ElijahFire", "HarperHearts", "JamesWorld", "EvelynCloud", "BenjaminHero", "AbigailStar", "William_Dev",
-        "EmilyMagic", "MichaelPro", "ElizabethGem", "Daniel_YT", "Sofia_ii", "Henry_B", "AveryAesthetic",
-        "Sebastian_G", "ScarlettRose", "JackDragon", "VictoriaWin", "Samuel_S", "Madison_M", "Alex_Gamer",
-        "Luna_Vibes", "Leo_TheLion", "Grace_G", "David_D", "Chloe_Playz", "John_J", "Penelope_P", "Luke_Cool",
-        "Layla_L", "Anthony_A", "Riley_R", "Isaac_I", "Zoey_Z", "Dylan_D", "Nora_N", "Wyatt_W", "Hazel_H",
-        "Andrew_A", "Lily_L", "Joshua_J", "Ellie_E", "Christopher_C", "Violet_V", "Grayson_G", "Stella_S",
-        "Julian_J", "Aurora_A", "Ryan_R", "Natalie_N", "Jaxon_J", "Hazel_H", "Hunter_H", "Audrey_A",
-        "Christian_C", "Brooklyn_B", "Landon_L", "Bella_B", "Jonathan_J", "Claire_C", "Isaiah_I", "Skylar_S",
-        "Charles_C", "Lucy_L", "Thomas_T", "Paisley_P", "Aaron_A", "Everly_E", "Nathan_N", "Anna_A",
-        "Miles_M", "Caroline_C", "Adrian_A", "Nova_N", "Nolan_N", "Genesis_G", "Easton_E", "Emilia_E",
-        "Elias_E", "Kennedy_K", "Colton_C", "Maya_M", "Cameron_C", "Madelyn_M", "Axel_A", "Adeline_A"
+        "BloxMaster_99", "ii_Sophia", "DarkKnight88", "ProGamer_123", "Mystic_Shadow", "CyberNinja_07", "DragonHeart_5", "Pixel_King", "AlphaWolf_77", "Cosmic_Rider",
+        "VoidWalker_3", "BlazeRunner_1", "Quantum_Leap", "Ironclad_22", "StarGazer_X", "NightOwl_9", "System_Shock", "DataWrangler", "Tech_Wizard", "ByteSmasher_4",
+        "CodeBreaker_11", "Logic_Bomb", "Hexa_Decimal", "Binary_Star", "Giga_Hertz", "Tera_Flop", "Mega_Byte", "Peta_Byte", "Exa_Byte", "Zetta_Byte",
+        "Yotta_Byte", "Virtual_Reality", "Augmented_Reality", "Machine_Learning", "Deep_Thought", "Neural_Network", "Artificial_Int", "Singularity_Now", "Super_Nova", "Black_Hole",
+        "Event_Horizon", "Worm_Hole", "Time_Traveler", "Space_Explorer", "Alien_Hunter", "UFO_Sighter", "Area51_Raider", "Conspiracy_Nut", "Flat_Earther", "Globe_Head",
+        "Sci_Fi_Fan", "Fantasy_Lover", "Role_Player", "Dungeon_Master", "Game_Master", "Story_Teller", "World_Builder", "Character_Creator", "Map_Maker", "Dice_Roller",
+        "Board_Gamer", "Card_Player", "Video_Gamer", "PC_MasterRace", "Console_Peasant", "Mobile_Gamer", "Cloud_Gamer", "Stream_Sniper", "Twitch_Prime", "YouTube_Gaming",
+        "Facebook_Live", "Mixer_Alum", "Trovo_Streamer", "DLive_Star", "Caffeine_Addict", "Noob_Slayer", "Pro_Player", "E_Sports_Champ", "Tournament_Winner", "League_Legend",
+        "Dota_Dragon", "CSGO_Sharpshooter", "Valorant_Viper", "Fortnite_Builder", "Apex_Predator", "PUBG_ChickenDinner", "Warzone_Winner", "Overwatch_Hero", "Minecraft_Crafter", "Roblox_Builder",
+        "AmongUs_Imposter", "FallGuys_Champion", "RocketLeague_Ace", "FIFA_Pro", "Madden_MVP", "NBA2K_Legend", "StreetFighter_Champ", "MortalKombat_Master", "SmashBros_Ultimate", "Pokemon_Master"
     ];
-    const amounts = ["400", "800", "1,700", "4,500", "10,000"];
+
+    let lastActivity = { name: '', amount: '' };
+
+    function getWeightedAmount() {
+        const rand = Math.random() * 100;
+        if (rand < 45) { // 45%
+            return "400";
+        } else if (rand < 80) { // 35%
+            return "1,700";
+        } else if (rand < 85) { // 5%
+            return "22,500";
+        }
+        // Remaining 15%
+        return Math.random() < 0.5 ? "800" : "4,500";
+    }
+
+    function censorName(name) {
+        const censorChar = '*';
+        const censorCount = Math.random() < 0.5 ? 3 : 4;
+        const start = name.length - censorCount;
+        if (start < 1) { // Ensure we don't censor the whole name
+            return name.substring(0, 1) + censorChar.repeat(name.length - 1);
+        }
+        return name.substring(0, start) + censorChar.repeat(censorCount);
+    }
 
     function addActivity() {
-        const name = names[Math.floor(Math.random() * names.length)];
-        const amount = amounts[Math.floor(Math.random() * amounts.length)];
+        let name, amount;
+        do {
+            name = names[Math.floor(Math.random() * names.length)];
+            amount = getWeightedAmount();
+        } while (name === lastActivity.name && amount === lastActivity.amount);
+
+        lastActivity = { name, amount };
+        const censoredName = censorName(name);
         
         const item = document.createElement('div');
         item.className = 'activity-item';
         item.innerHTML = `
-            <span class="activity-user"><i class="fas fa-user"></i> ${name}***</span>
+            <span class="activity-user"><i class="fas fa-user"></i> ${censoredName}</span>
             <span class="activity-amount">+${amount} Robux</span>
         `;
         
@@ -157,11 +184,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (activityList.children.length > 5) {
             activityList.removeChild(activityList.lastChild);
         }
+
+        // Natural timing
+        const randomDelay = Math.random() * (12000 - 4000) + 4000;
+        setTimeout(addActivity, randomDelay);
     }
 
-    for(let i=0; i<5; i++) addActivity();
-    
-    setInterval(addActivity, Math.random() * 5000 + 5000);
+    // Initial population of the activity list
+    for(let i=0; i<5; i++) {
+        setTimeout(addActivity, i * 1500); // Stagger initial population
+    }
 });
 
 // Modal Content Data
