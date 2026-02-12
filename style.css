@@ -172,12 +172,42 @@ input[type="text"]:focus {
 }
 
 .reward-item {
+    position: relative; /* For badge positioning */
     background: #222;
     padding: 20px;
     border-radius: 8px;
     cursor: pointer;
     border: 2px solid transparent;
     transition: all 0.3s;
+    overflow: hidden; /* To contain the badge */
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 30px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    transform-origin: center;
+    width: 120px;
+    text-align: center;
+    z-index: 1;
+}
+
+.badge.fastest-sync {
+    background: var(--success-color);
+}
+
+.sub-text {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 5px;
 }
 
 .reward-item:hover {
@@ -460,5 +490,10 @@ footer {
     .header-flex {
         flex-direction: column;
         gap: 15px;
+    }
+
+    .activity-item {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
